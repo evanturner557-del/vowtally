@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://evanturner557-del.github.io/vowtally/sitemap.xml
