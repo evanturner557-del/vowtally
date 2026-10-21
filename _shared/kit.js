@@ -69,24 +69,8 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
-      // 2026-10-14: if data-formsubmit is set, deliver via FormSubmit.co straight to the brand inbox; mailto stays as fallback.
-      var fsTok = form.getAttribute("data-formsubmit");
-      if (fsTok && !form.__fsFallback && window.fetch) {
-        var fd = new FormData(form), payload = {}, st = form.querySelector("[role=status]");
-        fd.forEach(function (v, k) { if (k !== "consent") payload[k] = String(v); });
-        payload._subject = (form.getAttribute("data-subject") || "Enquiry") + (payload.business ? " — " + payload.business : "");
-        if (payload.email) payload._replyto = payload.email;
-        payload._captcha = "false"; payload._template = "table";
-        fetch("https://formsubmit.co/ajax/" + fsTok, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(payload) })
-          .then(function (r) { return r.json(); })
-          .then(function (j) {
-            if (String(j.success) !== "true") throw new Error("fs");
-            if (st) { st.textContent = "Thanks" + (payload.name ? ", " + payload.name.trim().split(" ")[0] : "") + " — your message has been sent. We reply by email."; st.classList.add("is-visible"); }
-            track("contact_sent", { plan: payload.plan || null }); form.reset();
-          })
-          .catch(function () { form.__fsFallback = true; if (st) { st.textContent = "Sending didn't work — opening your email app instead."; st.classList.add("is-visible"); } form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event("submit", { cancelable: true })); });
-        return;
-      }
+      // The form only composes an email
+      // in the visitor's own mail app; nothing is sent through any third-party form processor.
       var to = form.getAttribute("data-email") || cfg.contactEmail;
       var data = new FormData(form);
       var name = (data.get("name") || "").toString().trim();

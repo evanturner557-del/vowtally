@@ -73,6 +73,7 @@ p { margin: 0; }
 .mobile-nav.is-open { display: block; }
 .mobile-nav a { display: flex; align-items: center; min-height: 52px; padding: 0 1.25rem; color: var(--text); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--line); }
 .mobile-nav .btn { margin: 1rem 1.25rem 1.25rem; display: flex; }
+.mobile-nav .btn--primary, .mobile-nav .btn--primary:hover { color: #fff; }
 @media (min-width: 60rem) {
   .nav { display: flex; }
   .site-header .header-cta { display: inline-flex; margin-left: .75rem; }
@@ -329,3 +330,8 @@ html[data-paused="true"] [data-cta="checkout"] { pointer-events: none; opacity: 
 @media (min-width: 60rem) { .pricing.pricing--single { grid-template-columns: 1fr; } }
 .tier-more { max-width: 64rem; margin: 1.25rem auto 0; text-align: center; color: var(--muted); font-size: .9375rem; line-height: 1.6; }
 .tier-more a { font-weight: 600; white-space: nowrap; }
+
+.site-header .header-link { display: inline-flex; color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: .2em; min-height: 44px; align-items: center; padding: 0 .25rem; }
+@media (max-width: 59.99rem) { .site-header .header-link { display: none; } }
+.btn-row .text-link { display: inline-flex; align-items: center; min-height: 48px; padding: 0 .25rem; color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
+.btn-row .text-link:hover, .site-header .header-link:hover { color: var(--accent-strong); }
