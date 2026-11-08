@@ -33,3 +33,5 @@ footer{padding:36px 0 48px;font-size:.9rem;border-top:1px solid color-mix(in srg
 .check h3{margin-top:18px}.check label{display:flex;gap:10px;align-items:flex-start;padding:6px 0}.check input{width:20px;height:20px;accent-color:var(--acc)}
 .legal{max-width:760px}.legal h2{font-size:1.3rem;margin-top:1.6em}
 .hero h1{font-size:clamp(2.4rem,6.5vw,4.6rem);max-width:13em}.hero{border-bottom:3px solid var(--ink)}.hero .art{float:right;width:180px;margin:0 0 20px 30px}.hero .lede{border-left:4px solid var(--acc);padding-left:18px}.step{border:none;border-top:2px solid var(--ink);border-radius:0;background:none}
+
+.fine.fine-gap{margin-top:18px}
